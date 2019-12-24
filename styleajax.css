@@ -2,3 +2,9 @@
     width: 100%;
     text-align: center;
 }
+.navbar-logo{
+	width: 50px;
+}
+.full-width{
+	width: 100%;
+}

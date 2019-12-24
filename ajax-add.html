@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Add Employee Details</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<BODY>
+		
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="collapse navbar-collapse">
+			    <a class="navbar-brand" href="#">SSS</a>
+			    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			      	<li class="nav-item active">
+			        	<a class="nav-link" href="ajax-display.html">Home <span class="sr-only">(current)</span></a>
+			      	</li>
+			      	<li class="nav-item">
+			       		<a class="nav-link" href="#">About</a>
+			      	</li>
+			    </ul>
+			  </div>
+		</nav>
+
+
+		<div class="container col-md-4" >
+			<!-- <div class="alert alert-success" role="alert">
+			  Done! Data added successfuly.
+			</div> -->
+			<br>
+			<h1>New Employee Details</h1><br>
+			<form id="employee1"  method="GET">
+					<input class="form-control form-control-lg" type="text" id="txtname" placeholder="Enter Your Name"><br><br>
+					
+					<div class="input-group mb-3">
+					  	<div class="input-group-prepend">
+					    	<span class="input-group-text">Rs.</span>
+					 	</div>
+						<input class="form-control form-control-lg" type="number" min="5000" id="txtsal" placeholder="Enter Your Salary">
+						<div class="input-group-append">
+					    	<span class="input-group-text">.00</span>
+					 	</div>
+					</div>
+					<br><br>
+					<input class="form-control form-control-lg" type="number" id="txtage" placeholder="Enter Your Age" min="18" max="60"><br><br>
+					<div>
+						<button class="btn btn-dark col-md-4 btn-block" id="btn-add" >
+							Add
+							<i class='far fa-hand-point-right'></i>
+						</button>
+					</div>
+					<br><br>
+					<ul class= "list-group" id="empdat">
+						
+					</ul>
+			</form>
+		</div>
+		
+	<script type="text/javascript">
+		$(function()
+		{
+			var empdetails=$("#empdat");
+
+			function addemp(empdetail)
+			{
+				//var spinner = $("spinner-border");
+				console.log(empdetail["id"]);
+				empdetails.append('<li class="list-group-item"> Name: '+empdetail.name+',  Salary: '+empdetail.salary+',  Age:  '+empdetail.age+'</li>');
+
+			}
+			$("#btn-add").on('click',function(e)
+			{
+				e.preventDefault();
+				var result = 
+				{
+					"name": $("#txtname").val(),
+					"salary": $("#txtsal").val(),
+					"age": $("#txtage").val()
+				};	
+				$.ajax({
+					type:'POST',
+					url:'http://dummy.restapiexample.com/api/v1/create',
+					data: JSON.stringify(result),
+					success:function(newdata)
+					{
+						console.log(newdata);
+						//spinner();
+						alert("New Employee Detail is Add!!");
+
+						addemp(JSON.parse(newdata));
+						
+					}
+				})		
+			});
+
+			/*function spinner(){
+				$("#spinner").bind("ajaxSend", function() {
+					        $(this).show();
+					    }).bind("ajaxStop", function() {
+					        $(this).hide();
+					    }).bind("ajaxError", function() {
+					        $(this).hide();
+					    });
+			}*/
+		});
+	</script>
+</BODY>
+</html>
+
+
+

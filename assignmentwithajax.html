@@ -34,7 +34,7 @@
             <a class="nav-link" style="color: white" href="#"><b>Contact</b></a>
           </li>
           <li class="nav-item">
-            <a href="addemp.html" class="btn btn-light">Add New Employee Details</a> 
+            <a href="ajax-add.html" class="btn btn-light">Add New Employee Details</a> 
           </li>
         </ul>
       </div>
@@ -75,7 +75,7 @@
 			{
 				if(obj[i]){
 
-				var lielement='<div class="col-md-3 card-wrapper"><div class="card" data-id='+obj[i].id+'><div class="card-body"><h5 class="card-title">Name:'+obj[i].employee_name+'</h5><p class="card-text">Salary:'+obj[i].employee_salary+'</p><p class="card-text">Age:'+obj[i].employee_age+'</p><a href="editemp.html?data_id='+obj[i].id+'" class="btn btn-outline-primary edit-button">Edit</a><a href="#" data_id='+obj[i].id+'" class="btn btn-outline-danger delbutton pull-right">Delete</a></div></div>	';	
+				var lielement='<div class="col-md-3 card-wrapper"><div class="card" data-id='+obj[i].id+'><div class="card-body"><h5 class="card-title">Name:'+obj[i].employee_name+'</h5><p class="card-text">Salary:'+obj[i].employee_salary+'</p><p class="card-text">Age:'+obj[i].employee_age+'</p><a href="ajax-edit.html?data_id='+obj[i].id+'" class="btn btn-outline-primary edit-button">Edit</a><a href="#" data_id='+obj[i].id+'" class="btn btn-outline-danger delbutton pull-right">Delete</a></div></div>	';	
 
 
 				$("#employee-container").append(lielement);
